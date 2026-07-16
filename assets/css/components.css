@@ -1,0 +1,745 @@
+/* assets/css/components.css — Login, float labels, doctor cards */
+
+/* ─── Login page ───────────────────── */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0A6EBD 0%, #064F8C 50%, #00B4A6 100%);
+    padding: 20px;
+    position: relative;
+    overflow: hidden
+}
+
+.login-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none
+}
+
+.login-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    animation: loginEntrance .5s ease forwards
+}
+
+@keyframes loginEntrance {
+    from {
+        transform: translateY(30px);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+.login-card-top {
+    background: linear-gradient(135deg, #0A6EBD, #00B4A6);
+    padding: 32px 32px 28px;
+    text-align: center;
+    color: white
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px
+}
+
+.login-logo-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    backdrop-filter: blur(4px)
+}
+
+.login-logo-text {
+    font-size: 1.2rem;
+    font-weight: 800
+}
+
+.login-subtitle {
+    font-size: .85rem;
+    opacity: .85;
+    margin-top: 4px
+}
+
+.login-card-body {
+    padding: 32px
+}
+
+.login-form .form-group {
+    position: relative;
+    margin-bottom: 20px
+}
+
+.login-form .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94A3B8;
+    font-size: .9rem;
+    pointer-events: none;
+    z-index: 1
+}
+
+.login-form .form-control {
+    padding-left: 42px;
+    height: 46px;
+    border-radius: 10px
+}
+
+.login-form .input-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94A3B8;
+    cursor: pointer;
+    font-size: .9rem;
+    transition: color .2s
+}
+
+.login-form .input-toggle:hover {
+    color: var(--primary)
+}
+
+.login-btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0A6EBD, #0090D0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: 0 4px 14px rgba(10, 110, 189, .35)
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10, 110, 189, .45)
+}
+
+.login-btn:active {
+    transform: translateY(0)
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: .8rem;
+    color: #64748B
+}
+
+.login-footer a {
+    color: var(--primary);
+    font-weight: 600
+}
+
+.login-roles {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.role-chip {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: .72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    border: 1.5px solid transparent
+}
+
+.role-chip.patient {
+    background: #EDE9FE;
+    color: #6D28D9;
+    border-color: #C4B5FD
+}
+
+.role-chip.doctor {
+    background: #E8F4FD;
+    color: #0A6EBD;
+    border-color: #BFDBFE
+}
+
+.role-chip.admin {
+    background: #FEF3C7;
+    color: #92400E;
+    border-color: #FDE68A
+}
+
+.role-chip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1)
+}
+
+/* ─── Float label inputs ──────────────── */
+.float-group {
+    position: relative;
+    margin-bottom: 20px
+}
+
+.float-group .form-control {
+    padding-top: 18px;
+    padding-bottom: 6px;
+    height: 54px
+}
+
+.float-group label {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: .875rem;
+    color: #94A3B8;
+    pointer-events: none;
+    transition: all .2s ease;
+    background: white;
+    padding: 0 4px
+}
+
+.float-group .form-control:focus~label,
+.float-group .form-control:not(:placeholder-shown)~label {
+    top: 8px;
+    transform: none;
+    font-size: .7rem;
+    color: var(--primary);
+    font-weight: 600
+}
+
+.float-group .form-control:focus~label {
+    color: var(--primary)
+}
+
+/* ─── Doctor card (admin) ─────────────── */
+.doctor-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px
+}
+
+.doctor-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition)
+}
+
+.doctor-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px)
+}
+
+.doctor-card-banner {
+    height: 80px;
+    background: linear-gradient(135deg, #0A6EBD, #00B4A6)
+}
+
+.doctor-card-body {
+    padding: 0 20px 20px;
+    position: relative
+}
+
+.doctor-card-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+    margin-top: -32px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-light)
+}
+
+.doctor-card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.doctor-card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-900)
+}
+
+.doctor-card-spec {
+    font-size: .78rem;
+    color: var(--gray-600);
+    margin-top: 2px
+}
+
+.doctor-card-fee {
+    font-size: .85rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 6px
+}
+
+.doctor-card-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--gray-100)
+}
+
+.doctor-card-stat {
+    text-align: center;
+    flex: 1
+}
+
+.doctor-card-stat .val {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-900)
+}
+
+.doctor-card-stat .lbl {
+    font-size: .68rem;
+    color: var(--gray-600)
+}
+
+.doctor-card-footer {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px
+}
+
+/* ─── Tab system ──────────────────────── */
+.tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--gray-100);
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    width: fit-content
+}
+
+.tab-btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    transition: var(--transition);
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.tab-btn.active {
+    background: white;
+    color: var(--primary);
+    box-shadow: var(--shadow)
+}
+
+.tab-content {
+    display: none
+}
+
+.tab-content.active {
+    display: block
+}
+
+/* ─── Filter bar ──────────────────────── */
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 16px;
+    background: white;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow)
+}
+
+.filter-bar select,
+.filter-bar input {
+    padding: 8px 12px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-size: .82rem;
+    color: var(--gray-700);
+    outline: none;
+    transition: var(--transition);
+    background: white
+}
+
+.filter-bar select:focus,
+.filter-bar input:focus {
+    border-color: var(--primary)
+}
+
+/* ─── Medication input rows (dynamic) ─── */
+.med-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    gap: 8px;
+    align-items: end;
+    background: var(--gray-50);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--gray-200);
+    margin-bottom: 8px
+}
+
+.med-row .remove-med {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: #FEE2E2;
+    color: #991B1B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: .85rem;
+    transition: var(--transition);
+    flex-shrink: 0
+}
+
+.med-row .remove-med:hover {
+    background: #FECACA
+}
+
+/* ─── Schedule config ─────────────────── */
+.schedule-day-row {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 16px;
+    background: white;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--gray-200);
+    margin-bottom: 8px;
+    transition: var(--transition)
+}
+
+.schedule-day-row:hover {
+    border-color: var(--primary-light)
+}
+
+.schedule-day-row.disabled-row {
+    opacity: .5
+}
+
+.day-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px
+}
+
+.day-toggle input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+    cursor: pointer
+}
+
+.day-toggle label {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    cursor: pointer
+}
+
+/* ─── Switch toggle ───────────────────── */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0
+}
+
+.toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #CBD5E1;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: .3s
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: .3s
+}
+
+.toggle-switch input:checked+.toggle-slider {
+    background: var(--primary)
+}
+
+.toggle-switch input:checked+.toggle-slider::before {
+    transform: translateX(20px)
+}
+
+/* ─── File upload ──────────────────────── */
+.upload-zone {
+    border: 2px dashed var(--gray-200);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition)
+}
+
+.upload-zone:hover {
+    border-color: var(--primary);
+    background: var(--primary-light)
+}
+
+.upload-zone i {
+    font-size: 2rem;
+    color: var(--gray-400);
+    display: block;
+    margin-bottom: 8px
+}
+
+.upload-zone p {
+    font-size: .85rem;
+    color: var(--gray-600)
+}
+
+/* ─── Notification list ───────────────── */
+.notif-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--gray-100);
+    transition: var(--transition);
+    cursor: pointer
+}
+
+.notif-item:hover {
+    background: var(--gray-50)
+}
+
+.notif-item.unread {
+    background: var(--primary-light)
+}
+
+.notif-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+    margin-top: 6px
+}
+
+.notif-title {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--gray-900)
+}
+
+.notif-msg {
+    font-size: .78rem;
+    color: var(--gray-600);
+    margin-top: 2px
+}
+
+.notif-time {
+    font-size: .7rem;
+    color: var(--gray-400);
+    margin-top: 4px
+}
+
+/* ─── Payment voucher ─────────────────── */
+.voucher {
+    max-width: 420px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 28px;
+    border-top: 5px solid var(--primary);
+    margin: 0 auto
+}
+
+.voucher-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px
+}
+
+.voucher-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--gray-900);
+    margin-bottom: 4px
+}
+
+.voucher-invoice {
+    font-size: .75rem;
+    color: var(--gray-600);
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.voucher-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: .88rem;
+    color: var(--gray-700)
+}
+
+.voucher-row.bold {
+    font-weight: 700;
+    color: var(--gray-900)
+}
+
+.voucher-divider {
+    border: none;
+    border-top: 1px solid var(--gray-100);
+    margin: 8px 0
+}
+
+.voucher-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    border-top: 2px solid var(--gray-200);
+    margin-top: 8px
+}
+
+/* ─── Specialty badge pills ───────────── */
+.spec-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: .75rem;
+    font-weight: 600
+}
+
+.spec-pill i {
+    font-size: .8rem
+}
+
+/* ─── Checkbox group ──────────────────── */
+.check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: .82rem;
+    transition: var(--transition)
+}
+
+.check-item:hover {
+    border-color: var(--primary);
+    color: var(--primary)
+}
+
+.check-item input {
+    accent-color: var(--primary)
+}
+
+.check-item.checked {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary)
+}
+
+/* ─── Status dot inline ───────────────── */
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px
+}
+
+.status-dot.active {
+    background: var(--success)
+}
+
+.status-dot.inactive {
+    background: var(--danger)
+}
+
+@media(max-width:768px) {
+    .med-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px
+    }
+
+    .schedule-day-row {
+        grid-template-columns: auto 1fr;
+        row-gap: 10px
+    }
+
+    .doctor-cards-grid {
+        grid-template-columns: 1fr
+    }
+}
